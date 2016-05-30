@@ -53,15 +53,27 @@ public class FeedViewerActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
+
             if (null == convertView) {
                 convertView = inflater.inflate(R.layout.gridview_item_image, parent, false);
+
+                convertView.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        System.out.println("POSITION =" + position);
+                        Intent intent = new Intent(FeedViewerActivity.this, ImageDetailActivity.class);
+                        intent.putExtra("URL", imageUrls.get(position));
+                        FeedViewerActivity.this.startActivity(intent);
+                    }
+                });
             }
 
             Picasso
                     .with(context)
                     .load(imageUrls.get(position))
-                    .fit() // will explain later
+                    .fit()
                     .into((ImageView) convertView);
 
             return convertView;

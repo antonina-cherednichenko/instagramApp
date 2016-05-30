@@ -24,8 +24,6 @@ public class JSONParser {
                 String standard = imagesObj.getJSONObject("standard_resolution").getString("url");
 
                 feeds.add(new FeedInfo(thumbnail, standard));
-
-                System.out.println("Images = " + imagesObj);
             }
         } catch (Exception e) {
             e.printStackTrace();

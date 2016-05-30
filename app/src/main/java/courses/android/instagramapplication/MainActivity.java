@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -27,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if (url.startsWith(ApplicationData.CALLBACK_URL)) {
-                System.out.println("URL = " + url);
                 String parts[] = url.split("=");
                 String requestToken = parts[1];
                 try {
@@ -36,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent feedIntent = new Intent(MainActivity.this, FeedViewerActivity.class);
                     feedIntent.putExtra("response", feedResult);
                     MainActivity.this.startActivity(feedIntent);
-                    System.out.println("Feed result = " + feedResult);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
