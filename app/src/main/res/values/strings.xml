@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">InstagramApplication</string>
+    <string name="title_activity_feed_viewer">FeedViewerActivity</string>
+</resources>
